@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-between mb-3">
+    <h4>Employee Details</h4>
+    <app-add-emp (empAdd)="addEmp($event)"></app-add-emp>
+</div>
+<div class="table-responsive">
+    <h2 *ngIf="this.emps.length === 0; else elseBlock" class="d-flex justify-content-center items-center">No Employees
+        to display.</h2>
+    <ng-template #elseBlock>
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <!-- <tbody> -->
+            <tbody *ngFor="let emp of emps; index as i">
+                <!-- <li>{{todo.sno}} - {{todo.title}} - {{todo.desc}}</li> -->
+                <tr key=`{i}`>
+                    <td>{{i + 1}}</td>
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>{{emp.mobile}}</td>
+                    <td>
+
+                        <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit" (click)="values(emp)">
+                            Edit
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit employee details</h1>
+                                    <button type="button" class="btn-close"data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-start">
+                                    <form (ngSubmit)="empEdit(emp)">
+                                        <div class="mb-3">
+                                          <label for="name" class="form-label">Name</label>
+                                          <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" [(ngModel)]="name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email">
+                                        </div>
+                                        <div class="mb-3">
+                                          <label for="mobile" class="form-label">Phone number</label>
+                                          <input type="text" class="form-control" id="mobile" aria-describedby="emailHelp" name="mobile" [(ngModel)]="mobile">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                                      </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary mx-2" (click)="deleteEmp(emp)">Delete</button>
+                    </td>
+                </tr>
+                <!-- </div> -->
+            </tbody>
+        </table>
+    </ng-template>
+</div>
