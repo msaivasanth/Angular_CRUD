@@ -58,13 +58,13 @@ export class EmployeesComponent {
   }
 
   onSearch = () => {
-    console.log(this.search)
+    // console.log(this.search)
     this.emps = JSON.parse(localStorage.getItem('employees') !)
     let searchRes = this.emps.filter((emp) => {
       return emp.name.toLowerCase().indexOf(this.search.toLowerCase()) != -1
     })
     this.emps = searchRes
     this.search = ''
-    console.log(searchRes)
+    // console.log(searchRes)
   }
 }
