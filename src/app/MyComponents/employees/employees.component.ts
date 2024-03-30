@@ -18,6 +18,8 @@ export class EmployeesComponent {
   email!: string
   mobile!: string
 
+  search!: string
+
   constructor() {
     if(localStorage.getItem('employees') == null) {
       this.emps = []
@@ -53,5 +55,16 @@ export class EmployeesComponent {
     this.emps[ind].mobile = this.mobile;
 
     localStorage.setItem('employees', JSON.stringify(this.emps))
+  }
+
+  onSearch = () => {
+    // console.log(this.search)
+    this.emps = JSON.parse(localStorage.getItem('employees') !)
+    let searchRes = this.emps.filter((emp) => {
+      return emp.name.toLowerCase().indexOf(this.search.toLowerCase()) != -1
+    })
+    this.emps = searchRes
+    this.search = ''
+    // console.log(searchRes)
   }
 }
