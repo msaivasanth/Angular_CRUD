@@ -27,12 +27,12 @@
                     <td>
 
                         <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit" (click)="values(emp)">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit" (click)="values(emp)" >
                             Edit
                     </button>
 
                     <!-- Modal -->
-                    <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -41,7 +41,7 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body text-start">
-                                    <form (ngSubmit)="empEdit(emp)">
+                                    <form (ngSubmit)="empEdit()">
                                         <div class="mb-3">
                                           <label for="name" class="form-label">Name</label>
                                           <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name" [(ngModel)]="name">

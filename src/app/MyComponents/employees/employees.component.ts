@@ -17,6 +17,7 @@ export class EmployeesComponent {
   name!: string
   email!: string
   mobile!: string
+  ind!: number
 
   constructor() {
     if(localStorage.getItem('employees') == null) {
@@ -44,13 +45,13 @@ export class EmployeesComponent {
     this.name = this.emps[ind].name
     this.email = this.emps[ind].email
     this.mobile = this.emps[ind].mobile
+    this.ind = ind;
   }
-  empEdit = (emp: Employee) => {
-    const ind = this.emps.indexOf(emp)
-  
-    this.emps[ind].name = this.name;
-    this.emps[ind].email = this.email;
-    this.emps[ind].mobile = this.mobile;
+  empEdit = () => {
+    
+    this.emps[this.ind].name = this.name;
+    this.emps[this.ind].email = this.email;
+    this.emps[this.ind].mobile = this.mobile;
 
     localStorage.setItem('employees', JSON.stringify(this.emps))
   }
